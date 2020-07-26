@@ -4,16 +4,21 @@ node {
 	}
 	 stage('Compile-Package'){
 	//Getmaven home path
-	def mvnHome = tool name: 'maven-3',type: 'maven'
-	sh "${mvnHome}/bin/mvn package"
+	//def mvnHome = tool name: 'maven-3',type: 'maven'
+	sh "mvn package"
 	}
 
 	stage('SonarQube Analysis'){
-		def mvnHome = tool name: 'maven-3', type: 'maven'
-		withSonarQubeEnv('Sonar') {
-		sh "${mvnHome}/bin/mvn sonar:sonar"
+		withSonarQubeEnv('sonarqube-1') {
+		sh "mvn sonar:sonar"
 		}
 	}
 	stage('Slack Notification'){
-
+	slackSend channel: '#mkhan345',
+		  color: 'good',
+		  failOnError: true,
+		  message: 'Push to sonarqube and build in intiated and is completed successfully',
+		  tokenCredentialId: 'slack-hook'
+	}
 	
+}
