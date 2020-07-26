@@ -5,7 +5,7 @@ node {
 	 stage('Compile-Package'){
 	//Getmaven home path
 	//def mvnHome = tool name: 'maven-3',type: 'maven'
-	sh "mvn package"
+	sh "mvn package -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn"
 	}
 
 	stage('SonarQube Analysis'){
