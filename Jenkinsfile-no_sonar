@@ -3,7 +3,7 @@ node{
 	  git 'https://github.com/mohsin996/java-cicd-jenkins'
 	  }
 
-	stage('Compile & Package) {
+	stage('Compile & Package') {
 	  sh 'mvn package'
 	}	
 
