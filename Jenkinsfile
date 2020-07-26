@@ -14,10 +14,11 @@ node {
 		}
 	}
 	stage('Slack Notification'){
-	slackSend channel: '#mkhan345',
-		  color: 'good',
-		  failOnError: true,
-		  message: 'Push to sonarqube and build in intiated and is completed successfully',
+	slackSend baseUrl: 'https://hooks.slack.com/services/',
+		  channel: '#mkhan345', 
+		  color: 'good', 
+		  failOnError: true, 
+		  message: 'Push to sonarqube and build in intiated and is completed successfully', 
 		  tokenCredentialId: 'slack-hook'
 	}
 	
