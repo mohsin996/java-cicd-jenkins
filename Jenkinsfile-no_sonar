@@ -1,0 +1,11 @@
+node{
+	stage('SCM Checkout'){
+	  git 'https://github.com/mohsin996/java-cicd-jenkins'
+	  }
+
+	stage('Compile & Package) {
+	  sh 'mvn package'
+	}	
+
+}	
+
